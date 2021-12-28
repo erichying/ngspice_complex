@@ -264,20 +264,28 @@ ElementPtr pElement;
 RealNumber *
 spGetElement(MatrixPtr Matrix, int Row, int Col)
 {
+    return &spGetComplexElement(Matrix, Row, Col)->Real;
+}
+
+
+
+ElementPtr
+spGetComplexElement(MatrixPtr Matrix, int Row, int Col)
+{
     ElementPtr pElement;
 
     /* Begin `spGetElement'. */
-    assert( IS_SPARSE( Matrix ) && Row >= 0 && Col >= 0 );
+    assert(IS_SPARSE(Matrix) && Row >= 0 && Col >= 0);
 
     if ((Row == 0) || (Col == 0))
-	return &Matrix->TrashCan.Real;
+        return &Matrix->TrashCan;
 
 #if !TRANSLATE
     assert(Matrix->NeedsOrdering);
 #endif
 
 #if TRANSLATE
-    Translate( Matrix, &Row, &Col );
+    Translate(Matrix, &Row, &Col);
     if (Matrix->Error == spNO_MEMORY) return NULL;
 #endif
 
@@ -289,7 +297,7 @@ spGetElement(MatrixPtr Matrix, int Row, int Col)
 #if EXPANDABLE
     /* Re-size Matrix if necessary. */
     if ((Row > Matrix->Size) || (Col > Matrix->Size))
-	EnlargeMatrix( Matrix, MAX(Row, Col) );
+        EnlargeMatrix(Matrix, MAX(Row, Col));
     if (Matrix->Error == spNO_MEMORY) return NULL;
 #endif
 #endif
@@ -305,16 +313,16 @@ spGetElement(MatrixPtr Matrix, int Row, int Col)
 
     if ((Row != Col) || ((pElement = Matrix->Diag[Row]) == NULL))
     {
-	/* Element does not exist or does not reside along diagonal.
-	 * Search column for element.  As in the if statement above,
-	 * the pointer to the element which is returned by
-	 * spcFindElementInCol is cast into a pointer to Real, a
-	 * RealNumber.  */
-	pElement = spcFindElementInCol( Matrix,
-						     &(Matrix->FirstInCol[Col]),
-						     Row, Col, YES );
+        /* Element does not exist or does not reside along diagonal.
+         * Search column for element.  As in the if statement above,
+         * the pointer to the element which is returned by
+         * spcFindElementInCol is cast into a pointer to Real, a
+         * RealNumber.  */
+        pElement = spcFindElementInCol(Matrix,
+            &(Matrix->FirstInCol[Col]),
+            Row, Col, YES);
     }
-    return & pElement->Real;
+    return pElement;
 }
 
 
@@ -322,11 +330,6 @@ spGetElement(MatrixPtr Matrix, int Row, int Col)
 
 
 
-
-
-
-
-
 /*
  *  FIND ELEMENT BY SEARCHING COLUMN
  *

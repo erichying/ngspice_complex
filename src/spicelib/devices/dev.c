@@ -125,6 +125,7 @@ extern struct coreInfo_t  coreInfo; /* cmexport.c */
 #include "vcvs/vcvsitf.h"
 #include "vsrc/vsrcitf.h"
 #include "vdmos/vdmositf.h"
+#include "imp/impitf.h"
 #ifdef ADMS
 #include "adms/hicum0/hicum0itf.h"
 #include "adms/mextram/bjt504titf.h"
@@ -147,7 +148,7 @@ extern struct coreInfo_t  coreInfo; /* cmexport.c */
 #include "ndev/ndevitf.h"
 #endif
 
-static SPICEdev *(*static_devices[])(void) = {
+static SPICEdev* (*static_devices[])(void) = {
     /* URC device MUST precede both resistors and capacitors */
     get_urc_info,
     get_asrc_info,
@@ -201,6 +202,7 @@ static SPICEdev *(*static_devices[])(void) = {
     get_vcvs_info,
     get_vsrc_info,
     get_vdmos_info,
+    get_imp_info,
 
 #ifdef CIDER
     get_nbjt_info,

@@ -1221,6 +1221,10 @@
     <ClInclude Include="..\src\spicelib\devices\hisimhv2\hsmhv2temp_eval.h" />
     <ClInclude Include="..\src\spicelib\devices\hisimhv2\hsmhv2temp_eval_dio.h" />
     <ClInclude Include="..\src\spicelib\devices\hisimhv2\hsmhv2temp_eval_rdri.h" />
+    <ClInclude Include="..\src\spicelib\devices\imp\impdefs.h" />
+    <ClInclude Include="..\src\spicelib\devices\imp\impext.h" />
+    <ClInclude Include="..\src\spicelib\devices\imp\impinit.h" />
+    <ClInclude Include="..\src\spicelib\devices\imp\impitf.h" />
     <ClInclude Include="..\src\spicelib\devices\ind\inddefs.h" />
     <ClInclude Include="..\src\spicelib\devices\ind\indext.h" />
     <ClInclude Include="..\src\spicelib\devices\ind\indinit.h" />
@@ -2196,6 +2200,11 @@
     <ClCompile Include="..\src\spicelib\devices\hisimhv2\hsmhv2soachk.c" />
     <ClCompile Include="..\src\spicelib\devices\hisimhv2\hsmhv2temp.c" />
     <ClCompile Include="..\src\spicelib\devices\hisimhv2\hsmhv2trunc.c" />
+    <ClCompile Include="..\src\spicelib\devices\imp\imp.c" />
+    <ClCompile Include="..\src\spicelib\devices\imp\impinit.c" />
+    <ClCompile Include="..\src\spicelib\devices\imp\impload.c" />
+    <ClCompile Include="..\src\spicelib\devices\imp\impparam.c" />
+    <ClCompile Include="..\src\spicelib\devices\imp\impsetup.c" />
     <ClCompile Include="..\src\spicelib\devices\ind\ind.c" />
     <ClCompile Include="..\src\spicelib\devices\ind\indacld.c" />
     <ClCompile Include="..\src\spicelib\devices\ind\indask.c" />
@@ -2640,6 +2649,7 @@
     <ClCompile Include="..\src\spicelib\parser\inp2w.c" />
     <ClCompile Include="..\src\spicelib\parser\inp2y.c" />
     <ClCompile Include="..\src\spicelib\parser\inp2z.c" />
+    <ClCompile Include="..\src\spicelib\parser\inp2zz.c" />
     <ClCompile Include="..\src\spicelib\parser\inpaname.c" />
     <ClCompile Include="..\src\spicelib\parser\inpapnam.c" />
     <ClCompile Include="..\src\spicelib\parser\inpcfix.c" />

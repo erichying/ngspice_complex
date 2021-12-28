@@ -57,6 +57,7 @@ struct INPtables {
     GENmodel *defWmod;
     GENmodel *defYmod;
     GENmodel *defZmod;
+    GENmodel* defZZmod;
 };
 
 /* Linked list of scoping information for each netlist line entry */

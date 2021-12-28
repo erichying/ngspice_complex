@@ -23,7 +23,8 @@ CKTparam(CKTcircuit *ckt, GENinstance *fast, int param, IFvalue *val, IFvalue *s
     NG_IGNORE(ckt);
 
     type = fast->GENmodPtr->GENmodType;
-    if(DEVices[type]->DEVparam) {
+    SPICEdev *dev = DEVices[type];
+    if(dev->DEVparam) {
         return(DEVices[type]->DEVparam (param, val, fast, selector));
     } else {
         return(E_BADPARM);

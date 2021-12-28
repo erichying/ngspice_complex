@@ -32,6 +32,7 @@ void INP2V(CKTcircuit *ckt, INPtables *tab, struct card *current);
 void INP2W(CKTcircuit *ckt, INPtables *tab, struct card *current);
 void INP2Y(CKTcircuit *ckt, INPtables *tab, struct card *current);
 void INP2Z(CKTcircuit *ckt, INPtables *tab, struct card *current);
+void INP2ZZ(CKTcircuit* ckt, INPtables* tab, struct card* current);
 
 
 /* ptfuncs.c */

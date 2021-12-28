@@ -27,7 +27,7 @@ void INPpas2(CKTcircuit *ckt, struct card *data, INPtables * tab, TSKtask *task)
 {
 
     struct card *current;
-    char c;
+    char c, cc;
     char *groundname = "0";
     char *gname;
     CKTnode *gnode;
@@ -88,8 +88,11 @@ void INPpas2(CKTcircuit *ckt, struct card *data, INPtables * tab, TSKtask *task)
 #endif
 
 	c = *(current->line);
+	cc = current->line[1];
 	if(islower_c(c))
 	    c = toupper_c(c);
+	if (islower_c(cc))
+		cc = toupper_c(cc);
 
 	switch (c) {
 
@@ -157,6 +160,10 @@ void INPpas2(CKTcircuit *ckt, struct card *data, INPtables * tab, TSKtask *task)
 	    break;
 
 	case 'Z':
+		if (cc == 'Z') {
+			INP2ZZ(ckt, tab, current);
+			break;
+		}
 	    /* Zname <node> <node> <node> <model> [<val>] [OFF] 
 	       [IC=<val>,<val>] */
 	    INP2Z(ckt, tab, current);

@@ -3,6 +3,7 @@
 
 typedef  struct MatrixFrame     SMPmatrix;
 typedef  struct MatrixElement   SMPelement;
+typedef  struct MatrixElement* ElementPtr;
 
 /**********
 Copyright 1990 Regents of the University of California.  All rights reserved.
@@ -16,6 +17,7 @@ Modified: 2000  AlansFixes
 
 int SMPaddElt( SMPmatrix *, int , int , double );
 double * SMPmakeElt( SMPmatrix * , int , int );
+ElementPtr SMPmakeComplexElt(SMPmatrix*, int, int);
 void SMPcClear( SMPmatrix *);
 void SMPclear( SMPmatrix *);
 int SMPcLUfac( SMPmatrix *, double );

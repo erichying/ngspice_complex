@@ -129,6 +129,16 @@ SMPmakeElt(SMPmatrix *Matrix, int Row, int Col)
 }
 
 /*
+ * SMPmakeComplexElt()
+ */
+ElementPtr
+SMPmakeComplexElt(SMPmatrix* Matrix, int Row, int Col)
+{
+    return spGetComplexElement(Matrix, Row, Col);
+}
+
+
+/*
  * SMPcClear()
  */
 void

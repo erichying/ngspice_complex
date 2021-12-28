@@ -99,6 +99,16 @@ INPgetValue(CKTcircuit *ckt, char **line, int type, INPtables *tab)
             return NULL;
         temp.tValue = (IFparseTree *) pt;
         /* INPptPrint("Parse tree is: ", temp.tValue); */
+    }
+    else if (type == IF_COMPLEX) {
+        temp.cValue.real = INPevaluate(line, &error, 1);
+        if (error) {
+            return NULL;
+        }
+        temp.cValue.imag = INPevaluate(line, &error, 1);
+        if (error) {
+            return NULL;
+        }
     } else {
         /* don't know what type of parameter caller is talking about! */
         return NULL;
