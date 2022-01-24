@@ -109,8 +109,9 @@ NIiter(CKTcircuit *ckt, int maxIter)
 
             if (ckt->CKTniState & NISHOULDREORDER) {
                 startTime = SPfrontEnd->IFseconds();
-                error = SMPreorder(ckt->CKTmatrix, ckt->CKTpivotAbsTol,
-                                   ckt->CKTpivotRelTol, ckt->CKTdiagGmin);
+                int numSwaps;
+                error = SMPcReorder(ckt->CKTmatrix, ckt->CKTpivotAbsTol,
+                                   ckt->CKTpivotRelTol, &numSwaps);
                 ckt->CKTstat->STATreorderTime +=
                     SPfrontEnd->IFseconds() - startTime;
                 if (error) {
@@ -159,7 +160,7 @@ NIiter(CKTcircuit *ckt, int maxIter)
                    (size_t) ckt->CKTnumStates * sizeof(double));
 
             startTime = SPfrontEnd->IFseconds();
-            SMPsolve(ckt->CKTmatrix, ckt->CKTrhs, ckt->CKTrhsSpare);
+            SMPcSolve(ckt->CKTmatrix, ckt->CKTrhs, ckt->CKTirhs, ckt->CKTrhsSpare, ckt->CKTirhsSpare);
             ckt->CKTstat->STATsolveTime +=
                 SPfrontEnd->IFseconds() - startTime;
 #ifdef STEPDEBUG
